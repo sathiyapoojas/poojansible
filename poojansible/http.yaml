@@ -1,0 +1,6 @@
+---
+- name: calling httpd
+  hosts: db
+  roles:
+   - httpd
+

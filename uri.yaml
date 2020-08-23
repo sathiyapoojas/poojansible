@@ -1,0 +1,8 @@
+---
+- name: Monitoring URL 
+  hosts: nodde7
+  tasks:
+   - name: Monitoring 
+     uri:
+      url: https://www.google.com
+      return_content: yes

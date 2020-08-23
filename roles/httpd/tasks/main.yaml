@@ -1,0 +1,26 @@
+---
+- name : creating file
+  hosts: nodde7
+  vars:
+   - package: httpd
+   - pathfile: /var/www/html/index.html
+  tasks:
+   - name: creating a index.html
+     file:
+      path: "{{pathfile}}"
+      state: touch
+   - name:
+     copy:
+      content: |
+       Role creation to bring up server
+      dest: "{{pathfile}}"
+     notify:
+      - restart httpd
+  handlers:
+   - name: restart httpd
+     service:
+      name: httpd
+      state: restarted
+
+
+

@@ -1,0 +1,8 @@
+---
+- name: copy the content in to remote nodes
+  hosts: all
+  tasks:
+  - name: copy the hostname.j2
+    template:
+     src: hostname.j2
+     dest: /tmp

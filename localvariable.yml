@@ -1,0 +1,15 @@
+---
+- name : creating a local variable
+  hosts: all
+  vars:
+   - package1: httd
+   - pathfile: /home/ansible/package.txt
+  tasks:
+   - name: unistalling the package httpd
+     yum:
+      name: "{{package1}}"
+      state: absent
+   - name: creating a filepackage.txt
+     file:
+      path: "{{pathfile}}"
+      state: touch

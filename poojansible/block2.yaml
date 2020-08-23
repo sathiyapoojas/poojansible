@@ -1,0 +1,27 @@
+---
+- name: Block and rescue method1
+  hosts: all
+  vars:
+   - pkg: vsftpd
+  tasks:
+   - block:
+      - name: Check the package
+        command: rpm -qa "{{ pk }}"
+        register: out
+      - debug:
+         var: out
+      - name: Install vsftpd
+        yum:
+         name: "{{ pkg }}"
+         state: present
+        when: out.stdout == ""
+        notify:
+         - restart vsftpd
+     rescue:
+      - name: restart vsftpd
+        service:
+         name: vsftpd
+         state: restarted
+     
+
+

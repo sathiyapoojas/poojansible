@@ -1,0 +1,22 @@
+---
+- name: chek whether the group is present or not
+  hosts: nodde7
+  vars_files:
+   - vault.yaml
+  tasks:
+  - name: Create a new group
+    shell: cat /etc/group | grep devops
+    register: output
+    ignore_errors: yes
+  - debug:
+     var: output
+  - name: Create a group devops
+    group:
+     name: devops
+     state: present
+    when: output.stdout == ""
+  - name: user tech to be created
+    user:
+     name: tech
+     password: "{{ techpass | password_hash('sha512')}}"
+     groups: devops

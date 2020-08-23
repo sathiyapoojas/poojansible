@@ -1,0 +1,19 @@
+---
+- name: block and rescue
+  hosts: all
+  vars:
+   - pkg: vsftpd
+  tasks:
+   - block:
+      - name : check the package
+        command: rpm -qa "{{ pk }}"
+        register: out
+      - debug:
+         var: out
+     rescue:
+      - name: check the service already present
+        command: service "{{ pkg }}" status
+        ignore_errors: yes
+        register: output
+      - debug:
+         var: output

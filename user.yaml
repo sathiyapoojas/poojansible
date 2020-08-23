@@ -1,0 +1,16 @@
+---
+- name: creating user and group
+  hosts: nodde7
+  tasks:
+  - name: creating user
+    user:
+      name: devops
+      state: present
+- name: creating group
+  hosts: node8
+  tasks:
+  - name: creating group
+    group:
+      name: devops
+      state: present
+

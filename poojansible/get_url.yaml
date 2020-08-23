@@ -1,0 +1,9 @@
+---
+- name: Downloading the URL content
+  hosts: all
+  tasks:
+   - name: Download to the dest
+     get_url: 
+      url: https://omextemplates.content.office.net/support/templates/en-us/tf00002110.docx
+      dest: /tmp
+

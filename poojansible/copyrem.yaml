@@ -1,0 +1,9 @@
+---
+- name : copy the hostname file from tmp to opt
+  hosts: nodde7,node8
+  tasks: 
+   - name: copy the file remotely
+     copy: 
+      src: /tmp/hostname.txt
+      dest: /opt
+      remote_src: yes

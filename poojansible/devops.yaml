@@ -1,0 +1,12 @@
+---
+- name: create a file
+  hosts: nodde7
+  tasks:
+  - name: create a file under /home/devops in nodde7
+    file:
+     path: /home/devops/devops.yaml
+     state: touch
+     owner: devops
+     group: devops
+
+

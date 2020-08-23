@@ -1,0 +1,16 @@
+---
+- name : package installation
+  hosts : node8
+  tasks :
+  - name : Installing package httpd
+    yum :
+      name : httpd
+      state : present
+    tags:
+     - httpd
+  - name : Installing wget package
+    yum :
+      name : wget
+      state: present
+    tags:
+     - wget

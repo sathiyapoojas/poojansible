@@ -1,0 +1,15 @@
+---
+- name: Installing two pakages
+  hosts: nodde7,node8
+  tasks:
+  - name: Install nginx and ntp
+    yum:
+     name: "{{ item }}"
+     state: present
+    loop:
+     - ntp
+     - nginx 
+
+
+
+

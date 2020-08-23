@@ -1,0 +1,19 @@
+---
+- name: install the pacakage and uninstall wget
+  hosts: all
+  tasks:
+  - name: check for the package wget
+    command: rpm -qa wget
+    register: output
+  - debug: 
+     var: output
+  - name: unistall the package wget in nodde7
+    yum:
+     name: wget
+     state: absent
+    when: ansible_hostname == "nodde7" and output.stdout != ""
+  - name: install the package xin
+    yum: 
+     name: xinetd
+     state: present
+    when: ansible_hostname == "node8"

@@ -1,0 +1,7 @@
+---
+- name : Helloworld
+  hosts : db
+  tasks :
+   - name : printing helloworld
+     command : echo "Helloworld"
+

@@ -1,0 +1,10 @@
+---
+- name: Copying from remote to the local hosts
+  hosts: all
+  tasks:
+   - name: copy from remoe to local
+     fetch:
+      src: /tmp/hostname.txt
+      dest: /tmp/
+      flat: yes
+

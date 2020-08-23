@@ -1,0 +1,5 @@
+---
+- name: install tree package
+  hosts: all
+  roles:
+   - tree

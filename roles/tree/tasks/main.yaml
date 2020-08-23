@@ -1,0 +1,5 @@
+---
+- name: install the package
+  yum:
+   name: tree
+   state: present

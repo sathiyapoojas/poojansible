@@ -1,0 +1,17 @@
+---
+- name: modify the file and restart
+  hosts: nodde7
+  tasks:
+   - name: change the content
+     copy:
+      content: |
+        Hey this the new customized httpd configuration file
+      dest: /opt/httpd.conf
+     notify:
+      - restart httpd
+  handlers:
+   - name: restart httpd
+     service:
+      name: httpd
+      state: restarted
+

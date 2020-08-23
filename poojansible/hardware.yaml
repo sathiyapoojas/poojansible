@@ -1,0 +1,15 @@
+---
+- name: create a file
+  hosts: all
+  tasks:
+  - name: create a file under /opt in nodes
+    file:
+     path: /opt/harddetails
+     state: touch
+     owner: devops
+     group: devops
+  - name: copy the hardwarereport.j2 
+    template:
+     src: hardwarereport.j2 
+     dest: /opt/harddetails
+
